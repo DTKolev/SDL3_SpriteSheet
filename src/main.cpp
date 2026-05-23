@@ -89,7 +89,9 @@ int main(int argc, char* argv[]) {
 	}
 
 	//Load sprite sheet and create texture
-	SDL_Surface* surface = IMG_Load("../src/adventurer_sprite_sheet.png");
+	const char* binaryPath = SDL_GetBasePath();
+	std::string imagePath = std::string(binaryPath) + "../src/adventurer_sprite_sheet.png";
+	SDL_Surface* surface = IMG_Load(imagePath.c_str());
 	if (surface == nullptr) {
 		processError.surface(surface, renderer, window);
 		return 1;
